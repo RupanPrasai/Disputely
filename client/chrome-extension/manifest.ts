@@ -38,6 +38,7 @@ const manifest = {
     type: 'module',
   },
   action: {
+    default_popup: 'popup/index.html',
     default_icon: 'icon-34.png',
   },
   chrome_url_overrides: {
@@ -48,23 +49,23 @@ const manifest = {
   },
   content_scripts: [
     {
-      matches: ['http://*/*', 'https://*/*', '<all_urls>'],
+      matches: ['http://nonexistent.local/*'],
       js: ['content/all.iife.js'],
     },
     {
-      matches: ['https://example.com/*'],
+      matches: ['http://nonexistent.local/*'],
       js: ['content/example.iife.js'],
     },
     {
-      matches: ['http://*/*', 'https://*/*', '<all_urls>'],
+      matches: ['http://nonexistent.local/*'],
       js: ['content-ui/all.iife.js'],
     },
     {
-      matches: ['https://example.com/*'],
+      matches: ['http://nonexistent.local/*'],
       js: ['content-ui/example.iife.js'],
     },
     {
-      matches: ['http://*/*', 'https://*/*', '<all_urls>'],
+      matches: ['http://nonexistent.local/*'],
       css: ['content.css'],
     },
   ],
