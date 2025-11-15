@@ -15,7 +15,11 @@
     "128": "icon-128.png"
   },
   "permissions": [
-    "activeTab"
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "<all_urls>"
   ],
   "devtools_page": "src/pages/devtools/index.html",
   "web_accessible_resources": [

@@ -4,6 +4,7 @@ import logo from '@assets/img/logo.svg';
 export default function Popup() {
 
   const injectContentScript = async () => {
+    console.log("HANDLER INVOKED");
     const [tab] = await chrome.tabs.query({
       currentWindow: true,
       active: true
@@ -14,10 +15,14 @@ export default function Popup() {
       console.error('Injection Error');
     }
 
+    console.log("BEFORE CHROME EXECUTESCRIPT");
     await chrome.scripting
       .executeScript({
         target: { tabId: tab.id! },
-        files: ['../content/index.tsx'],
+        files: ['content/index.js'],
+      })
+      .then(() => {
+        console.log("EXECUTESCRIPT SUCCESS");
       })
       .catch(error => {
         if (error.message.includes('Cannot access a chrome:// URL')) {
@@ -33,7 +38,12 @@ export default function Popup() {
         <p>
           Edit <code>src/pages/popup/Popup.jsx</code> and save to reload.
         </p>
-        <button onClick={injectContentScript}>Inject Here</button>
+        <button
+          onClick={injectContentScript}
+          className='mt-3 px-4 py-2 bg-blue-500 text-white-rounded'
+        >
+          Inject Here
+        </button>
         <p>Popup styled with TailwindCSS!</p>
       </header>
     </div>
