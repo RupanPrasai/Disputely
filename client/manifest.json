@@ -18,6 +18,16 @@
     "activeTab",
     "scripting"
   ],
+  "content_scripts": [
+    {
+      "matches": [
+        "http://0.invalid/*"
+      ],
+      "js": [
+        "src/pages/content/index.tsx"
+      ]
+    }
+  ],
   "host_permissions": [
     "<all_urls>"
   ],
